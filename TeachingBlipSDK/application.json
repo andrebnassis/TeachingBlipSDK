@@ -1,0 +1,15 @@
+﻿{
+   "identifier": "solzabot",
+  "accessKey": "cVo1UmtwT1JVaE8xVzZ3NVNoMjg=",
+  "messageReceivers": [
+    {
+      "type": "PlainTextMessageReceiver",
+      "mediaType": "text/plain"
+    }
+  ],
+  "settings": {
+    "setting1": "value1"
+  },
+  "startupType": "Startup",
+  "schemaVersion": 2
+}
