@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Lime.Protocol;
@@ -7,6 +7,7 @@ using Takenet.MessagingHub.Client.Listener;
 using Takenet.MessagingHub.Client.Sender;
 using System.Diagnostics;
 using Lime.Messaging.Contents;
+using System.Collections.Generic;
 
 namespace TeachingBlipSDK
 {
@@ -33,7 +34,7 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             //var text = new PlainText
             //{
-            //    Text = "... Inspira��o, e um pouco de caf�! E isso me basta!"
+            //    Text = "... Inspiração, e um pouco de café! E isso me basta!"
             //};
             //await _sender.SendMessageAsync(text, message.From, cancellationToken);
 
@@ -41,8 +42,15 @@ namespace TeachingBlipSDK
             /*-------------Sending text. 2.0---------------*/
             /*---------------------------------------------*/
             //var text = new PlainText();
-            //text.Text = "... Inspira��o, e um pouco de caf�! E isso me basta!";
+            //text.Text = "... Inspiração, e um pouco de café! E isso me basta!";
             //await _sender.SendMessageAsync(text, message.From, cancellationToken);
+
+            /*---------------------------------------------*/
+            /*---------------Sending text. 3.0-------------*/
+            /*---------------------------------------------*/
+            //var document = BlipSDKHelper.CreateText("... Inspiração, e um pouco de café! E isso me basta!");
+            
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------------*/
             /*----------Sending Image + text. 1.0----------*/
@@ -68,6 +76,14 @@ namespace TeachingBlipSDK
             //document.Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
+            /*---------------------------------------------*/
+            /*----------Sending Image + text. 3.0----------*/
+            /*---------------------------------------------*/
+            //var document = BlipSDKHelper.CreateImage("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg", "ObrigatoryTitle", "OptionalText");
+            //var document = BlipSDKHelper.CreateVideo("https://dl.dropboxusercontent.com/s/g407mwt2agivwu6/filmejogo%2024%20B.mp4", "title", "text");
+            
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
             /*-------------------------------------------------*/
             /*--sending weblink(Image Or Video with link) 1.0--*/
             /*-------------------------------------------------*/
@@ -80,6 +96,7 @@ namespace TeachingBlipSDK
             //};
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
+
             /*-------------------------------------------------*/
             /*--sending weblink(Image Or Video with link) 2.0--*/
             /*-------------------------------------------------*/
@@ -88,6 +105,14 @@ namespace TeachingBlipSDK
             //document.PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //document.Title = "Obrigatory Title";
             //document.Text = "Non Obrigatory Text";
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+
+            /*-------------------------------------------------*/
+            /*--sending weblink(Image Or Video with link) 3.0--*/
+            /*-------------------------------------------------*/
+            //var document = BlipSDKHelper.CreateImageWithLink("http://www.w3schools.com/css/img_fjords.jpg", "https://pixabay.com/p-1285634/?no_redirect", "Obrigatory text", "Non-Obrigatory text");
+            
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*-------------------------------------------------*/
@@ -144,6 +169,17 @@ namespace TeachingBlipSDK
             //document.Options[2].Text = "Option 2";
             //document.Options[2].Value = "Value 2";
             //document.Options[2].Order = 2;
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+            /*-------------------------------------------------*/
+            /*-------sending list of options (select) 3.0------*/
+            /*-------------------------------------------------*/
+            //It is grouped by 3. 
+            //Dictionary<string, string> buttons = new Dictionary<string, string>();
+            //buttons.Add("Botao1", "Value1");
+            //buttons.Add("Botao2", "Value2");
+            //var document = BlipSDKHelper.CreateListOfOptions("Escolha uma opção:", buttons);
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -278,6 +314,17 @@ namespace TeachingBlipSDK
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
+            /*----------------------------------*/
+            /*------Creating quickreply 3.0-----*/
+            /*----------------------------------*/
+            //List<DocumentSelectOption> buttons = new List<DocumentSelectOption>();
+            //buttons.Add(BlipSDKHelper.CreateQuickReplyDefaultButton("botão1", "bla"));
+            //buttons.Add(BlipSDKHelper.CreateQuickReplyDefaultButton("botão2", "bla2"));
+            //buttons.Add(BlipSDKHelper.CreateQuickReplySendLocationButton());
+            //var document = BlipSDKHelper.CreateQuickReply($"Onde você está? 🙂\n\n📨Envie seu CEP, endereço ou localização", buttons);
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
             /*-----------------------------------------------------------*/
             /*--------Sending multiple things at the same time. 1.0------*/
             /*-----------------------------------------------------------*/
@@ -291,7 +338,7 @@ namespace TeachingBlipSDK
             //            {
             //                Value = new PlainText
             //                        {
-            //                            Text = "... Inspira��o, e um pouco de caf�! E isso me basta!"
+            //                            Text = "... Inspiração, e um pouco de café! E isso me basta!"
             //                        }
             //            },
             //            new DocumentContainer
@@ -318,7 +365,7 @@ namespace TeachingBlipSDK
 
             //document.Items[0] = new DocumentContainer();
             //(document.Items[0] as DocumentContainer).Value = new PlainText();
-            //((document.Items[0] as DocumentContainer).Value as PlainText).Text = "... Inspira��o, e um pouco de caf�! E isso me basta!";
+            //((document.Items[0] as DocumentContainer).Value as PlainText).Text = "... Inspiração, e um pouco de café! E isso me basta!";
 
             //document.Items[1] = new DocumentContainer();
             //(document.Items[1] as DocumentContainer).Value = new WebLink();
@@ -326,6 +373,18 @@ namespace TeachingBlipSDK
             //((document.Items[1] as DocumentContainer).Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //((document.Items[1] as DocumentContainer).Value as WebLink).Title = "Obrigatory Title";
             //((document.Items[1] as DocumentContainer).Value as WebLink).Text = "Non Obrigatory Text";
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+            /*-----------------------------------------------------------*/
+            /*--------Sending multiple things at the same time. 3.0------*/
+            /*-----------------------------------------------------------*/
+
+            //List<Document> content = new List<Document>();
+            //content.Add(BlipSDKHelper.CreateText("First message"));
+            //content.Add(BlipSDKHelper.CreateImage("http://www.amor.blog.br/imagens/imagens-de-amor-imagem-15.jpg", "Title"));
+            //content.Add(BlipSDKHelper.CreateVideo("https://dl.dropboxusercontent.com/s/g407mwt2agivwu6/filmejogo%2024%20B.mp4"));
+            //var document = BlipSDKHelper.CreateListOfDocuments(content);
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -466,6 +525,31 @@ namespace TeachingBlipSDK
             //((document.Items[1] as DocumentSelect).Options[1].Label as DocumentContainer).Value = "Button 2";
             //(document.Items[1] as DocumentSelect).Options[1].Value = new DocumentContainer();
             //((document.Items[1] as DocumentSelect).Options[1].Value as DocumentContainer).Value = "Value 2";
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+            /*-----------------------------------------------------------*/
+            /*---------------------Carroussel. 3.0-----------------------*/
+            /*-----------------------------------------------------------*/
+
+            //List<MediaLink> content = new List<MediaLink>();
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle, Image and Buttons", "Image goes up above, Title goes above, Subtitle goes here and button goes below.", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Button", "Title goes above, Subtitle goes here and button goes below.", ""));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Image", "Image goes up above, Title goes above and Subtitle goes here.", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Image and Button: Image goes up above, Title goes here and button below", "", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Image: Image goes up above, Title goes here", "", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Subtitle", "Title goes above, Subtitle goes here", ""));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Button: Title goes here, button goes below", "", ""));
+
+            //List<Button> buttons = new List<Button>();
+            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateText("First button: Text"), 1, "bla", 0));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.w3schools.com/css/img_fjords.jpg", "Second button: Link"), 0, "bla2", 0));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateText("Just a text"), 1, "bla3", 1));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.w3schools.com/css/img_fjords.jpg", "Redirect to link"), 1, "bla4", 3));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.w3schools.com/css/img_fjords.jpg", "Redirect to link"), 1, "bla5", 6));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.facebook.com", "Redirect to link"), 2, "bla6", 6));
+
+            //var document = BlipSDKHelper.CreateCarroussel(content, buttons);
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
