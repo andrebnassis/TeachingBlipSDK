@@ -14,10 +14,12 @@ namespace TeachingBlipSDK
     public class PlainTextMessageReceiver : IMessageReceiver
     {
         private readonly IMessagingHubSender _sender;
-
-        public PlainTextMessageReceiver(IMessagingHubSender sender)
+        private Settings _settings;
+        public PlainTextMessageReceiver(IMessagingHubSender sender, Settings settings)
         {
+            _settings = settings;
             _sender = sender;
+            
         }
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
@@ -28,6 +30,11 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             //Trace.TraceInformation($"From: {message.From} \tContent: {message.Content}");
             //await _sender.SendMessageAsync("Pong!", message.From, cancellationToken);
+
+            /*------------------------------------------*/
+            /*----------Working with _settings----------*/
+            /*------------------------------------------*/
+            var text2 = _settings.setting1;
 
             /*---------------------------------------------*/
             /*-------------Sending text. 1.0---------------*/
@@ -49,7 +56,7 @@ namespace TeachingBlipSDK
             /*---------------Sending text. 3.0-------------*/
             /*---------------------------------------------*/
             //var document = BlipSDKHelper.CreateText("... Inspiração, e um pouco de café! E isso me basta!");
-            
+
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------------*/
@@ -81,7 +88,7 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             //var document = BlipSDKHelper.CreateImage("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg", "ObrigatoryTitle", "OptionalText");
             //var document = BlipSDKHelper.CreateVideo("https://dl.dropboxusercontent.com/s/g407mwt2agivwu6/filmejogo%2024%20B.mp4", "title", "text");
-            
+
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*-------------------------------------------------*/
@@ -112,7 +119,7 @@ namespace TeachingBlipSDK
             /*--sending weblink(Image Or Video with link) 3.0--*/
             /*-------------------------------------------------*/
             //var document = BlipSDKHelper.CreateImageWithLink("http://www.w3schools.com/css/img_fjords.jpg", "https://pixabay.com/p-1285634/?no_redirect", "Obrigatory text", "Non-Obrigatory text");
-            
+
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*-------------------------------------------------*/
