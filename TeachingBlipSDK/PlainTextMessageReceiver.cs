@@ -8,6 +8,7 @@ using Takenet.MessagingHub.Client.Sender;
 using System.Diagnostics;
 using Lime.Messaging.Contents;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace TeachingBlipSDK
 {
@@ -24,7 +25,7 @@ namespace TeachingBlipSDK
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-
+            
             /*---------------------------------------------*/
             /*----------------Hello World.----------------*/
             /*---------------------------------------------*/
@@ -560,8 +561,163 @@ namespace TeachingBlipSDK
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
+            /*---------------------------------------*/
+            /*----------------List. 1.0--------------*/
+            /*---------------------------------------*/
+            //Header não é obrigatório.
+            //O maximo de elementos (Header + Lista) é igual a 4.
+
+            //var document = new DocumentList
+            //{
+            //    Header = new DocumentContainer
+            //    {
+            //        Value = new WebLink
+            //        {
+            //            Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //            PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //            Title = "Obrigatory Title",
+            //            Text = "Non Obrigatory Text"
+            //        }
+            //    },
+            //    Items = new DocumentContainer[] 
+            //    {
+            //        new DocumentContainer
+            //        {
+            //              Value = new WebLink
+            //                {
+            //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //                    Title = "Obrigatory Title",
+            //                    Text = "Non Obrigatory Text"
+            //                }
+            //        },
+            //         new DocumentContainer
+            //        {
+            //              Value = new WebLink
+            //                {
+            //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //                    Title = "Obrigatory Title",
+            //                    Text = "Non Obrigatory Text"
+            //                }
+            //        },
+            //          new DocumentContainer
+            //        {
+            //              Value = new WebLink
+            //                {
+            //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //                    Title = "Obrigatory Title",
+            //                    Text = "Non Obrigatory Text"
+            //                }
+
+            //        }
+
+            //    }
+
+            //};
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+            /*---------------------------------------*/
+            /*----------------List. 2.0--------------*/
+            /*---------------------------------------*/
+            //Header não é obrigatório.
+            //O Mínimo de elementos (Header + Lista) é igual a 2.
+            //O Máximo de elementos (Header + Lista) é igual a 4.
+
+
+            //var document = new DocumentList();
+            //document.Header = new DocumentContainer();
+            //document.Header.Value = new WebLink();
+            //(document.Header.Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Header.Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Header.Value as WebLink).Title = "Obrigatory Title";
+            //(document.Header.Value as WebLink).Text = "Non Obrigatory Text";
+            //document.Items = new DocumentContainer[3];
+            //document.Items[0] = new DocumentContainer();
+            //document.Items[0].Value = new WebLink();
+            //(document.Items[0].Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Items[0].Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Items[0].Value as WebLink).Title = "Obrigatory Title";
+            //(document.Items[0].Value as WebLink).Text = "Non Obrigatory Text";
+            //document.Items[1] = new DocumentContainer();
+            //document.Items[1].Value = new WebLink();
+            //(document.Items[1].Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Items[1].Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Items[1].Value as WebLink).Title = "Obrigatory Title";
+            //(document.Items[1].Value as WebLink).Text = "Non Obrigatory Text";
+            //document.Items[2] = new DocumentContainer();
+            //document.Items[2].Value = new WebLink();
+            //(document.Items[2].Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Items[2].Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //(document.Items[2].Value as WebLink).Title = "Obrigatory Title";
+            //(document.Items[2].Value as WebLink).Text = "Non Obrigatory Text";
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+            /*---------------------------------------*/
+            /*----------------List. 3.0--------------*/
+            /*---------------------------------------*/
+
+            //var content = new List<WebLink>();
+            //content.Add(BlipSDKHelper.CreateImageWithLink("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg", "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg", "Title", "Text"));
+            //content.Add(BlipSDKHelper.CreateImageWithLink("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg", "http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg", "Title", "Text"));
+            //var document = BlipSDKHelper.CreateList(content);
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+            /*---------------------------------------*/
+            /*-------------Receipt Payment-----------*/
+            /*---------------------------------------*/
+            //Update BlipSDK para aceitar Address.
+            //Fazer funcionar o Address.
+
+            //var document = new PaymentReceipt
+            //{
+            //    Code = Guid.NewGuid().ToString(),
+            //    PaidOn = DateTime.Now,
+            //    Currency = "BRL",
+            //    Total = decimal.Parse((10.85).ToString()),
+            //    Method = new PaymentMethod
+            //    {
+            //        //Name = PaymentMethod.NAME_KEY,
+            //        //Account = PaymentMethod.ACCOUNT_KEY
+            //        Name = "Cartão de Crédito",
+            //        Account = "Blablabla"
+
+            //    },
+            //    Taxes = decimal.Parse((10.85).ToString()),
+            //    Address = new PaymentAddress
+            //    {
+            //        City = "Belo Horizonte",
+            //        Country = "Brasil",
+            //        PostalCode = "31313313",
+            //        State = "Minas Gerais",
+            //        Street = "Rua blablabla N 123 Bairro Bla"
+            //    },
+            //    Items = new InvoiceItem[]{
+            //        new InvoiceItem
+            //        {
+            //            Quantity = 1,
+            //            Unit = decimal.Parse((10.85).ToString()),
+            //            Currency = "BRL",
+            //            Total = decimal.Parse((10.85).ToString()),
+            //            Description = "Some description",
+            //            Taxes = decimal.Parse((10.85).ToString()),
+            //            ImageUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //            ImageType = WebLink.MediaType,
+            //            Complement = "bla"
+            //        }
+
+            //    }
+
+
+            //};
+
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
         }
-
+        
     }
 }

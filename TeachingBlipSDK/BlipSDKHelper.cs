@@ -324,5 +324,28 @@ namespace TeachingBlipSDK
             return button;
         }
 
+        public static DocumentList CreateList(List<WebLink> content)
+        {
+            //List Facebook limit range is >=2 and <=4.
+            if (content.Count > 4 || content.Count < 2)
+            {
+                return null;
+
+            }
+            var document = new DocumentList();
+
+            document.Header = new DocumentContainer();
+            document.Header.Value = content[0];
+
+            document.Items = new DocumentContainer[content.Count - 1];
+            for (int i = 1; i < content.Count; i++)
+            {
+                document.Items[i - 1] = new DocumentContainer();
+                document.Items[i - 1].Value = content[i];
+            }
+
+            return document;
+        }
+
     }
 }
