@@ -57,7 +57,6 @@ namespace TeachingBlipSDK
             /*---------------Sending text. 3.0-------------*/
             /*---------------------------------------------*/
             //var document = BlipSDKHelper.CreateText("... Inspiração, e um pouco de café! E isso me basta!");
-
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------------*/
@@ -65,11 +64,11 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             //var document = new MediaLink
             //{
-            //    Title = "ObrigatoryTitle",
+            //    Title = "ObligatoryTitle",
             //    Text = "OptionalText",
-            //    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
+            //    PreviewUri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/34/imagine-1913561_960_720.jpg"),
             //    Type = MediaType.Parse("image/*"),
-            //    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg")
+            //    Uri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/40/imagine-1913584_960_720.jpg")
             //};
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -77,17 +76,17 @@ namespace TeachingBlipSDK
             /*----------Sending Image + text. 2.0----------*/
             /*---------------------------------------------*/
             //var document = new MediaLink();
-            //document.Title = "ObrigatoryTitle";
+            //document.Title = "ObligatoryTitle";
             //document.Text = "OptionalText";
             //document.Type = MediaType.Parse("image/*");
-            //document.PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //document.Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //document.PreviewUri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/34/imagine-1913561_960_720.jpg");
+            //document.Uri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/40/imagine-1913584_960_720.jpg");
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------------*/
             /*----------Sending Image + text. 3.0----------*/
             /*---------------------------------------------*/
-            //var document = BlipSDKHelper.CreateImage("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg", "ObrigatoryTitle", "OptionalText");
+            var document = BlipSDKHelper.CreateImage("https://cdn.pixabay.com/photo/2016/12/17/14/40/imagine-1913584_960_720.jpg", "https://cdn.pixabay.com/photo/2016/12/17/14/34/imagine-1913561_960_720.jpg", "ObligatoryTitle", "OptionalText");
             //var document = BlipSDKHelper.CreateVideo("https://dl.dropboxusercontent.com/s/g407mwt2agivwu6/filmejogo%2024%20B.mp4", "title", "text");
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -99,8 +98,8 @@ namespace TeachingBlipSDK
             //{
             //    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //    Title = "Obrigatory Title",
-            //    Text = "Non Obrigatory Text"
+            //    Title = "Obligatory Title",
+            //    Text = "Optional Text"
             //};
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -111,15 +110,15 @@ namespace TeachingBlipSDK
             //var document = new WebLink();
             //document.Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //document.PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //document.Title = "Obrigatory Title";
-            //document.Text = "Non Obrigatory Text";
+            //document.Title = "Obligatory Title";
+            //document.Text = "Optional Text";
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
 
             /*-------------------------------------------------*/
             /*--sending weblink(Image Or Video with link) 3.0--*/
             /*-------------------------------------------------*/
-            //var document = BlipSDKHelper.CreateImageWithLink("http://www.w3schools.com/css/img_fjords.jpg", "https://pixabay.com/p-1285634/?no_redirect", "Obrigatory text", "Non-Obrigatory text");
+            //var document = BlipSDKHelper.CreateImageWithLink("http://www.w3schools.com/css/img_fjords.jpg", "https://pixabay.com/p-1285634/?no_redirect", "Obligatory text", "Non-Obligatory text");
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -355,8 +354,8 @@ namespace TeachingBlipSDK
             //                        {
             //                            Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //                            PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //                            Title = "Obrigatory Title",
-            //                            Text = "Non Obrigatory Text"
+            //                            Title = "Obligatory Title",
+            //                            Text = "Optional Text"
             //                        }
             //            }
             //    }
@@ -379,8 +378,8 @@ namespace TeachingBlipSDK
             //(document.Items[1] as DocumentContainer).Value = new WebLink();
             //((document.Items[1] as DocumentContainer).Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //((document.Items[1] as DocumentContainer).Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //((document.Items[1] as DocumentContainer).Value as WebLink).Title = "Obrigatory Title";
-            //((document.Items[1] as DocumentContainer).Value as WebLink).Text = "Non Obrigatory Text";
+            //((document.Items[1] as DocumentContainer).Value as WebLink).Title = "Obligatory Title";
+            //((document.Items[1] as DocumentContainer).Value as WebLink).Text = "Optional Text";
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -410,7 +409,7 @@ namespace TeachingBlipSDK
             //            {
             //                Value = new MediaLink
             //                {
-            //                    Title = "Obrigatory Text 1",
+            //                    Title = "Obligatory Text 1",
             //                    Text = "Optional Text 1",
             //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg")
@@ -450,7 +449,7 @@ namespace TeachingBlipSDK
             //            {
             //                Value = new MediaLink
             //                {
-            //                    Title = "Obrigatory Text 1",
+            //                    Title = "Obligatory Text 1",
             //                    Text = "Optional Text 1",
             //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg")
@@ -499,7 +498,7 @@ namespace TeachingBlipSDK
             //document.Items[0] = new DocumentSelect();
             //(document.Items[0] as DocumentSelect).Header = new DocumentContainer();
             //(document.Items[0] as DocumentSelect).Header.Value = new MediaLink();
-            //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).Title = "Obrigatory Title";
+            //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).Title = "Obligatory Title";
             //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).Text = "Optional Text";
             //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
@@ -518,7 +517,7 @@ namespace TeachingBlipSDK
             //document.Items[1] = new DocumentSelect();
             //(document.Items[1] as DocumentSelect).Header = new DocumentContainer();
             //(document.Items[1] as DocumentSelect).Header.Value = new MediaLink();
-            //((document.Items[1] as DocumentSelect).Header.Value as MediaLink).Title = "Obrigatory Title";
+            //((document.Items[1] as DocumentSelect).Header.Value as MediaLink).Title = "Obligatory Title";
             //((document.Items[1] as DocumentSelect).Header.Value as MediaLink).Text = "Optional Text";
             //((document.Items[1] as DocumentSelect).Header.Value as MediaLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //((document.Items[1] as DocumentSelect).Header.Value as MediaLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
@@ -575,8 +574,8 @@ namespace TeachingBlipSDK
             //        {
             //            Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //            PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //            Title = "Obrigatory Title",
-            //            Text = "Non Obrigatory Text"
+            //            Title = "Obligatory Title",
+            //            Text = "Optional Text"
             //        }
             //    },
             //    Items = new DocumentContainer[] 
@@ -587,8 +586,8 @@ namespace TeachingBlipSDK
             //                {
             //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //                    Title = "Obrigatory Title",
-            //                    Text = "Non Obrigatory Text"
+            //                    Title = "Obligatory Title",
+            //                    Text = "Optional Text"
             //                }
             //        },
             //         new DocumentContainer
@@ -597,8 +596,8 @@ namespace TeachingBlipSDK
             //                {
             //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //                    Title = "Obrigatory Title",
-            //                    Text = "Non Obrigatory Text"
+            //                    Title = "Obligatory Title",
+            //                    Text = "Optional Text"
             //                }
             //        },
             //          new DocumentContainer
@@ -607,8 +606,8 @@ namespace TeachingBlipSDK
             //                {
             //                    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
             //                    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //                    Title = "Obrigatory Title",
-            //                    Text = "Non Obrigatory Text"
+            //                    Title = "Obligatory Title",
+            //                    Text = "Optional Text"
             //                }
 
             //        }
@@ -632,27 +631,27 @@ namespace TeachingBlipSDK
             //document.Header.Value = new WebLink();
             //(document.Header.Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //(document.Header.Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //(document.Header.Value as WebLink).Title = "Obrigatory Title";
-            //(document.Header.Value as WebLink).Text = "Non Obrigatory Text";
+            //(document.Header.Value as WebLink).Title = "Obligatory Title";
+            //(document.Header.Value as WebLink).Text = "Optional Text";
             //document.Items = new DocumentContainer[3];
             //document.Items[0] = new DocumentContainer();
             //document.Items[0].Value = new WebLink();
             //(document.Items[0].Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //(document.Items[0].Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //(document.Items[0].Value as WebLink).Title = "Obrigatory Title";
-            //(document.Items[0].Value as WebLink).Text = "Non Obrigatory Text";
+            //(document.Items[0].Value as WebLink).Title = "Obligatory Title";
+            //(document.Items[0].Value as WebLink).Text = "Optional Text";
             //document.Items[1] = new DocumentContainer();
             //document.Items[1].Value = new WebLink();
             //(document.Items[1].Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //(document.Items[1].Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //(document.Items[1].Value as WebLink).Title = "Obrigatory Title";
-            //(document.Items[1].Value as WebLink).Text = "Non Obrigatory Text";
+            //(document.Items[1].Value as WebLink).Title = "Obligatory Title";
+            //(document.Items[1].Value as WebLink).Text = "Optional Text";
             //document.Items[2] = new DocumentContainer();
             //document.Items[2].Value = new WebLink();
             //(document.Items[2].Value as WebLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //(document.Items[2].Value as WebLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //(document.Items[2].Value as WebLink).Title = "Obrigatory Title";
-            //(document.Items[2].Value as WebLink).Text = "Non Obrigatory Text";
+            //(document.Items[2].Value as WebLink).Title = "Obligatory Title";
+            //(document.Items[2].Value as WebLink).Text = "Optional Text";
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -670,8 +669,6 @@ namespace TeachingBlipSDK
             /*---------------------------------------*/
             /*-------------Receipt Payment-----------*/
             /*---------------------------------------*/
-            //Update BlipSDK para aceitar Address.
-            //Fazer funcionar o Address.
 
             //var document = new PaymentReceipt
             //{
@@ -690,11 +687,12 @@ namespace TeachingBlipSDK
             //    Taxes = decimal.Parse((10.85).ToString()),
             //    Address = new PaymentAddress
             //    {
-            //        City = "Belo Horizonte",
-            //        Country = "Brasil",
-            //        PostalCode = "31313313",
-            //        State = "Minas Gerais",
-            //        Street = "Rua blablabla N 123 Bairro Bla"
+
+            //        Street = "1 Hacker Way",
+            //        City = "Menlo Park",
+            //        PostalCode = "94025",
+            //        State = "CA",
+            //        Country = "US"
             //    },
             //    Items = new InvoiceItem[]{
             //        new InvoiceItem

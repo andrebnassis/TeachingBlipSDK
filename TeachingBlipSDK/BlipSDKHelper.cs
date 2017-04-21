@@ -101,84 +101,84 @@ namespace TeachingBlipSDK
             return btn;
         }
 
-        public static MediaLink CreateImage(string urlImage, string title, string text, string type)
+        public static MediaLink CreateImage(string urlImage, string previewUrlImage, string title, string text, string type)
         {
-            var imageUri = new Uri(urlImage);
-
+            var imageUri = new Uri(Uri.EscapeUriString(urlImage));
+            var previewImageUri = new Uri(Uri.EscapeUriString(previewUrlImage));
             var document = new MediaLink();
             document.Title = title;
             document.Text = text;
             document.Type = MediaType.Parse(type);
-            document.PreviewUri = imageUri;
+            document.PreviewUri = previewImageUri;
             document.Uri = imageUri;
 
             return document;
         }
 
-        public static MediaLink CreateImage(string urlImage, string title, string text)
+        public static MediaLink CreateImage(string urlImage, string previewUrlImage, string title, string text)
         {
-            var imageUri = new Uri(urlImage);
-
+            var imageUri = new Uri(Uri.EscapeUriString(urlImage));
+            var previewImageUri = new Uri(Uri.EscapeUriString(previewUrlImage));
             var document = new MediaLink();
             document.Title = title;
             document.Text = text;
-            document.Type = MediaType.Parse("image/jpeg");
-            document.PreviewUri = imageUri;
+            document.Type = MediaType.Parse("image/*");
+            document.PreviewUri = previewImageUri;
             document.Uri = imageUri;
 
             return document;
         }
 
-        public static MediaLink CreateImage(string urlImage, string title)
+        public static MediaLink CreateImage(string urlImage, string previewUrlImage, string title)
         {
-            var imageUri = new Uri(urlImage);
-
+            var imageUri = new Uri(Uri.EscapeUriString(urlImage));
+            var previewImageUri = new Uri(Uri.EscapeUriString(previewUrlImage));
             var document = new MediaLink();
             document.Title = title;
             document.Text = "";
-            document.Type = MediaType.Parse("image/jpeg");
-            document.PreviewUri = imageUri;
+            document.Type = MediaType.Parse("image/*");
+            document.PreviewUri = previewImageUri;
             document.Uri = imageUri;
 
             return document;
         }
 
-        public static MediaLink CreateVideo(string urlVideo)
+        public static MediaLink CreateVideo(string urlVideo,string previewUrlVideo)
         {
             var videoUri = new Uri(Uri.EscapeUriString(urlVideo));
-
+            var previewVideoUri = new Uri(Uri.EscapeUriString(previewUrlVideo));
             var document = new MediaLink();
             document.Text = "";
-            document.Type = MediaType.Parse("video/mp4");
-            document.PreviewUri = videoUri;
+            document.Type = MediaType.Parse("video/*");
+            document.PreviewUri = previewVideoUri;
             document.Uri = videoUri;
 
             return document;
         }
 
-        public static MediaLink CreateVideo(string urlVideo, string title)
+        public static MediaLink CreateVideo(string urlVideo, string previewUrlVideo, string title)
         {
             var videoUri = new Uri(Uri.EscapeUriString(urlVideo));
-
+            var previewVideoUri = new Uri(Uri.EscapeUriString(previewUrlVideo));
             var document = new MediaLink();
             document.Title = title;
             document.Text = "";
-            document.Type = MediaType.Parse("video/mp4");
-            document.PreviewUri = videoUri;
+            document.Type = MediaType.Parse("video/*");
+            document.PreviewUri = previewVideoUri;
             document.Uri = videoUri;
 
             return document;
         }
 
-        public static MediaLink CreateVideo(string urlVideo, string title, string text)
+        public static MediaLink CreateVideo(string urlVideo, string previewUrlVideo, string title, string text)
         {
             var videoUri = new Uri(Uri.EscapeUriString(urlVideo));
-
+            var previewVideoUri = new Uri(Uri.EscapeUriString(previewUrlVideo));
             var document = new MediaLink();
             document.Title = title;
             document.Text = text;
-            document.Type = MediaType.Parse("video/mp4");
-            document.PreviewUri = videoUri;
+            document.Type = MediaType.Parse("video/*");
+            document.PreviewUri = previewVideoUri;
             document.Uri = videoUri;
 
             return document;
