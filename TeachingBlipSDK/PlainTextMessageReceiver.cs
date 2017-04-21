@@ -40,18 +40,18 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             /*-------------Sending text. 1.0---------------*/
             /*---------------------------------------------*/
-            //var text = new PlainText
+            //var document = new PlainText
             //{
             //    Text = "... Inspiração, e um pouco de café! E isso me basta!"
             //};
-            //await _sender.SendMessageAsync(text, message.From, cancellationToken);
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------------*/
             /*-------------Sending text. 2.0---------------*/
             /*---------------------------------------------*/
-            //var text = new PlainText();
-            //text.Text = "... Inspiração, e um pouco de café! E isso me basta!";
-            //await _sender.SendMessageAsync(text, message.From, cancellationToken);
+            //var document = new PlainText();
+            //document.Text = "... Inspiração, e um pouco de café! E isso me basta!";
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------------*/
             /*---------------Sending text. 3.0-------------*/

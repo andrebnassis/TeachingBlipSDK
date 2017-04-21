@@ -12,9 +12,9 @@ namespace TeachingBlipSDK
     {
         public static PlainText CreateText(string text)
         {
-            var result = new PlainText();
-            result.Text = text;
-            return result;
+            var document = new PlainText();
+            document.Text = text;
+            return document;
         }
 
         public static DocumentCollection CreateCarroussel(List<MediaLink> content, List<CarrousselButton> buttons)
