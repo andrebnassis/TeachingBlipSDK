@@ -143,42 +143,39 @@ namespace TeachingBlipSDK
             return document;
         }
 
-        public static MediaLink CreateVideo(string urlVideo,string previewUrlVideo)
+        public static MediaLink CreateVideo(string urlVideo)
         {
             var videoUri = new Uri(Uri.EscapeUriString(urlVideo));
-            var previewVideoUri = new Uri(Uri.EscapeUriString(previewUrlVideo));
             var document = new MediaLink();
             document.Text = "";
             document.Type = MediaType.Parse("video/*");
-            document.PreviewUri = previewVideoUri;
+            document.PreviewUri = videoUri;
             document.Uri = videoUri;
 
             return document;
         }
 
-        public static MediaLink CreateVideo(string urlVideo, string previewUrlVideo, string title)
+        public static MediaLink CreateVideo(string urlVideo, string title)
         {
             var videoUri = new Uri(Uri.EscapeUriString(urlVideo));
-            var previewVideoUri = new Uri(Uri.EscapeUriString(previewUrlVideo));
             var document = new MediaLink();
             document.Title = title;
             document.Text = "";
             document.Type = MediaType.Parse("video/*");
-            document.PreviewUri = previewVideoUri;
+            document.PreviewUri = videoUri;
             document.Uri = videoUri;
 
             return document;
         }
 
-        public static MediaLink CreateVideo(string urlVideo, string previewUrlVideo, string title, string text)
+        public static MediaLink CreateVideo(string urlVideo, string title, string text)
         {
             var videoUri = new Uri(Uri.EscapeUriString(urlVideo));
-            var previewVideoUri = new Uri(Uri.EscapeUriString(previewUrlVideo));
             var document = new MediaLink();
             document.Title = title;
             document.Text = text;
             document.Type = MediaType.Parse("video/*");
-            document.PreviewUri = previewVideoUri;
+            document.PreviewUri = videoUri;
             document.Uri = videoUri;
 
             return document;

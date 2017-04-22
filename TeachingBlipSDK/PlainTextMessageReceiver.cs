@@ -66,9 +66,9 @@ namespace TeachingBlipSDK
             //{
             //    Title = "ObligatoryTitle",
             //    Text = "OptionalText",
-            //    PreviewUri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/34/imagine-1913561_960_720.jpg"),
+            //    PreviewUri = new Uri("https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg"),
             //    Type = MediaType.Parse("image/*"),
-            //    Uri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/40/imagine-1913584_960_720.jpg")
+            //    Uri = new Uri("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg")
             //};
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -79,37 +79,37 @@ namespace TeachingBlipSDK
             //document.Title = "ObligatoryTitle";
             //document.Text = "OptionalText";
             //document.Type = MediaType.Parse("image/*");
-            //document.PreviewUri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/34/imagine-1913561_960_720.jpg");
-            //document.Uri = new Uri("https://cdn.pixabay.com/photo/2016/12/17/14/40/imagine-1913584_960_720.jpg");
+            //document.PreviewUri = new Uri("https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg");
+            //document.Uri = new Uri("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg");
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------------*/
             /*----------Sending Image + text. 3.0----------*/
             /*---------------------------------------------*/
-            var document = BlipSDKHelper.CreateImage("https://cdn.pixabay.com/photo/2016/12/17/14/40/imagine-1913584_960_720.jpg", "https://cdn.pixabay.com/photo/2016/12/17/14/34/imagine-1913561_960_720.jpg", "ObligatoryTitle", "OptionalText");
-            //var document = BlipSDKHelper.CreateVideo("https://dl.dropboxusercontent.com/s/g407mwt2agivwu6/filmejogo%2024%20B.mp4", "title", "text");
+            //var document = BlipSDKHelper.CreateImage("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg", "https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg", "ObligatoryTitle", "OptionalText");
+            //var document = BlipSDKHelper.CreateVideo("https://dl.dropboxusercontent.com/s/jxy3sspxbl6ilan/John%20Lennon%20-%20Imagine.mp4", "title", "text");
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*-------------------------------------------------*/
             /*--sending weblink(Image Or Video with link) 1.0--*/
             /*-------------------------------------------------*/
-            //var document = new WebLink
-            //{
-            //    Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //    PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg"),
-            //    Title = "Obligatory Title",
-            //    Text = "Optional Text"
-            //};
-            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+            var document = new WebLink
+            {
+                Uri = new Uri("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg"),
+                PreviewUri = new Uri("https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg"),
+                Title = "Obligatory Title",
+                Text = "Optional Text"
+            };
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
 
             /*-------------------------------------------------*/
             /*--sending weblink(Image Or Video with link) 2.0--*/
             /*-------------------------------------------------*/
             //var document = new WebLink();
-            //document.Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //document.PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
+            //document.Uri = new Uri("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg");
+            //document.PreviewUri = new Uri("https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg");
             //document.Title = "Obligatory Title";
             //document.Text = "Optional Text";
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
@@ -118,7 +118,7 @@ namespace TeachingBlipSDK
             /*-------------------------------------------------*/
             /*--sending weblink(Image Or Video with link) 3.0--*/
             /*-------------------------------------------------*/
-            //var document = BlipSDKHelper.CreateImageWithLink("http://www.w3schools.com/css/img_fjords.jpg", "https://pixabay.com/p-1285634/?no_redirect", "Obligatory text", "Non-Obligatory text");
+            //var document = BlipSDKHelper.CreateImageWithLink("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg", "https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg", "Obligatory text", "Non-Obligatory text");
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
@@ -716,6 +716,6 @@ namespace TeachingBlipSDK
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
         }
-        
+
     }
 }
