@@ -9,28 +9,36 @@ using System.Diagnostics;
 using Lime.Messaging.Contents;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Takenet.MessagingHub.Client.Extensions.Directory;
 
 namespace TeachingBlipSDK
 {
     public class PlainTextMessageReceiver : IMessageReceiver
     {
+        private readonly IDirectoryExtension _directory;
         private readonly IMessagingHubSender _sender;
         private Settings _settings;
-        public PlainTextMessageReceiver(IMessagingHubSender sender, Settings settings)
+        public PlainTextMessageReceiver(IMessagingHubSender sender, IDirectoryExtension directory, Settings settings)
         {
             _settings = settings;
+            _directory = directory;
             _sender = sender;
             
         }
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            
+           
             /*---------------------------------------------*/
             /*----------------Hello World.----------------*/
             /*---------------------------------------------*/
             //Trace.TraceInformation($"From: {message.From} \tContent: {message.Content}");
             //await _sender.SendMessageAsync("Pong!", message.From, cancellationToken);
+
+            /*---------------------------------------------*/
+            /*----------Getting user information------------*/
+            /*---------------------------------------------*/
+            var info = await _directory.GetDirectoryAccountAsync(message.From.ToIdentity(), cancellationToken);
 
             /*------------------------------------------*/
             /*----------Working with _settings----------*/
@@ -94,14 +102,14 @@ namespace TeachingBlipSDK
             /*-------------------------------------------------*/
             /*--sending weblink(Image Or Video with link) 1.0--*/
             /*-------------------------------------------------*/
-            var document = new WebLink
-            {
-                Uri = new Uri("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg"),
-                PreviewUri = new Uri("https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg"),
-                Title = "Obligatory Title",
-                Text = "Optional Text"
-            };
-            await _sender.SendMessageAsync(document, message.From, cancellationToken);
+            //var document = new WebLink
+            //{
+            //    Uri = new Uri("https://dl.dropboxusercontent.com/s/99sw7vu788suww1/imagineFloor.jpg"),
+            //    PreviewUri = new Uri("https://dl.dropboxusercontent.com/s/0u34yn7pj29ak1v/imagineFloorPreview.jpg"),
+            //    Title = "Obligatory Title",
+            //    Text = "Optional Text"
+            //};
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
 
             /*-------------------------------------------------*/
