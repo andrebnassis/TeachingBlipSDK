@@ -10,6 +10,7 @@ namespace TeachingBlipSDK
 {
     public static class BlipSDKHelper
     {
+      
         public static PlainText CreateText(string text)
         {
             var document = new PlainText();

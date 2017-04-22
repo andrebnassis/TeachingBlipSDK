@@ -6,6 +6,7 @@ using Takenet.MessagingHub.Client.Sender;
 using Takenet.MessagingHub.Client.Listener;
 using System.Diagnostics;
 using System;
+using Takenet.MessagingHub.Client.Extensions.Bucket;
 
 namespace TeachingBlipSDK
 {
@@ -22,7 +23,7 @@ namespace TeachingBlipSDK
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-			Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+			Trace.Listeners.Add(new TextWriterTraceListener(Console.Out)); 
             return Task.CompletedTask;
         }
     }

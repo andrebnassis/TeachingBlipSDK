@@ -10,11 +10,13 @@ using Lime.Messaging.Contents;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Takenet.MessagingHub.Client.Extensions.Directory;
+using Takenet.MessagingHub.Client.Extensions.Bucket;
 
 namespace TeachingBlipSDK
 {
     public class PlainTextMessageReceiver : IMessageReceiver
     {
+        private readonly IBucketExtension _bucket;
         private readonly IDirectoryExtension _directory;
         private readonly IMessagingHubSender _sender;
         private Settings _settings;
@@ -39,6 +41,28 @@ namespace TeachingBlipSDK
             /*----------Getting user information------------*/
             /*---------------------------------------------*/
             var info = await _directory.GetDirectoryAccountAsync(message.From.ToIdentity(), cancellationToken);
+
+            /*---------------------------------------------*/
+            /*-----------------Save Data-------------------*/
+            /*---------------------------------------------*/
+            //Como fazer o bucket gravar informações sem ser do tipo Document?
+
+            //Key can be anything you want.
+            var key = message.From.ToIdentity().Name + "_Example";
+            //For X minutes.
+            //await _bucket.SetAsync(key, PlainText.Parse("Example"), TimeSpan.FromMinutes(2));
+            //Until you delete it.
+            //await _bucket.SetAsync(key, PlainText.Parse("Example"));
+
+            /*---------------------------------------------*/
+            /*-----------------Get Data-------------------*/
+            /*---------------------------------------------*/
+            var data_example = await _bucket.GetAsync<PlainText>(key);
+
+            /*---------------------------------------------*/
+            /*---------------Delete Data-------------------*/
+            /*---------------------------------------------*/
+            await _bucket.DeleteAsync(key);
 
             /*------------------------------------------*/
             /*----------Working with _settings----------*/
