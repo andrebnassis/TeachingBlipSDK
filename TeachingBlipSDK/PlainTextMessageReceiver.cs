@@ -77,16 +77,20 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             /*--------------Scheduling Messages------------*/
             /*---------------------------------------------*/
-            var to = message.From;
-            var from = message.To;
-            message.From = from;
-            message.To = to;
-            
-            var date = DateTime.Now.Ticks;
-            var date2 = DateTime.UtcNow.ToLocalTime();
-            var date3 = date2.ToFileTimeUtc();
-            await _scheduler.ScheduleMessageAsync(message, DateTimeOffset.Now + TimeSpan.FromMinutes(1) , cancellationToken);
-            var info = await _scheduler.GetScheduledMessageAsync(message.Id, cancellationToken);
+
+            ////Não precisa do From.
+            //var messageToSend = new Message
+            //{
+            //    Content = BlipSDKHelper.CreateText("Testando Scheduler"),
+            //    Id = EnvelopeId.NewId(),
+            //    To = message.From
+            //};
+
+            ////Schedule message.
+            //await _scheduler.ScheduleMessageAsync(messageToSend, DateTimeOffset.Now + TimeSpan.FromMinutes(1) , cancellationToken);
+
+            ////Getting schedule info of scheduled message.
+            //var scheduleInfo = await _scheduler.GetScheduledMessageAsync(messageToSend.Id, cancellationToken);
 
 
             /*---------------------------------------------*/
