@@ -13,29 +13,33 @@ using Takenet.MessagingHub.Client.Extensions.Directory;
 using Takenet.MessagingHub.Client.Extensions.Bucket;
 using Takenet.MessagingHub.Client.Extensions.Scheduler;
 using Takenet.Iris.Messaging.Resources;
+using Takenet.MessagingHub.Client.Extensions.Broadcast;
 
 namespace TeachingBlipSDK
 {
     public class PlainTextMessageReceiver : IMessageReceiver
     {
+        private readonly IBroadcastExtension _broadcaster;
         private readonly ISchedulerExtension _scheduler;
         private readonly IBucketExtension _bucket;
         private readonly IDirectoryExtension _directory;
         private readonly IMessagingHubSender _sender;
         private Settings _settings;
-        public PlainTextMessageReceiver(IMessagingHubSender sender, IDirectoryExtension directory, Settings settings, IBucketExtension bucket,ISchedulerExtension scheduler)
+
+        public PlainTextMessageReceiver(IMessagingHubSender sender, IDirectoryExtension directory, Settings settings, IBucketExtension bucket,ISchedulerExtension scheduler, IBroadcastExtension broadcaster)
         {
             _settings = settings;
             _scheduler = scheduler;
             _bucket = bucket;
             _directory = directory;
             _sender = sender;
+            _broadcaster = broadcaster;
             
         }
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-            
+
             /*---------------------------------------------*/
             /*----------------Hello World.----------------*/
             /*---------------------------------------------*/
@@ -46,28 +50,6 @@ namespace TeachingBlipSDK
             /*----------Getting user information------------*/
             /*---------------------------------------------*/
             //var info = await _directory.GetDirectoryAccountAsync(message.From.ToIdentity(), cancellationToken);
-
-            /*---------------------------------------------*/
-            /*-----------------Save Data-------------------*/
-            /*---------------------------------------------*/
-            //Como fazer o bucket gravar informações sem ser do tipo Document?
-
-            ////Key can be anything you want.
-            //var key = message.From.ToIdentity().Name + "_Example";
-            ////For X minutes.
-            //await _bucket.SetAsync(key, PlainText.Parse("Example"), TimeSpan.FromMinutes(2));
-            ////Until you delete it.
-            //await _bucket.SetAsync(key, PlainText.Parse("Example"));
-
-            /*---------------------------------------------*/
-            /*-----------------Get Data-------------------*/
-            /*---------------------------------------------*/
-            //var data_example = await _bucket.GetAsync<PlainText>(key);
-
-            /*---------------------------------------------*/
-            /*---------------Delete Data-------------------*/
-            /*---------------------------------------------*/
-            //await _bucket.DeleteAsync(key);
 
             /*------------------------------------------*/
             /*----------Working with _settings----------*/
@@ -770,6 +752,54 @@ namespace TeachingBlipSDK
             //};
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+
+
+            /*----------------------------------------------------------------*/
+            /*-----------------Bucket Extension - Save Data-------------------*/
+            /*----------------------------------------------------------------*/
+            //Como fazer o bucket gravar informações sem ser do tipo Document?
+
+            ////Key can be anything you want.
+            //var key = message.From.ToIdentity().Name + "_Example";
+            ////For X minutes.
+            //await _bucket.SetAsync(key, PlainText.Parse("Example"), TimeSpan.FromMinutes(2));
+            ////Until you delete it.
+            //await _bucket.SetAsync(key, PlainText.Parse("Example"));
+
+            /*---------------------------------------------------------------*/
+            /*-----------------Bucket Extension - Get Data-------------------*/
+            /*---------------------------------------------------------------*/
+            //var data_example = await _bucket.GetAsync<PlainText>(key);
+
+            /*----------------------------------------------------------------*/
+            /*---------------Bucket Extension - Delete Data-------------------*/
+            /*----------------------------------------------------------------*/
+            //await _bucket.DeleteAsync(key);
+
+
+            /*-------------------------------------------------------------*/
+            /*-------------Broadcaster Extension (Envio em massa)----------*/
+            /*-------------------------------------------------------------*/
+            //Not working properly yet.
+
+            //Create broadcast users list.
+            //await _broadcaster.CreateDistributionListAsync("testlist", cancellationToken);
+
+            //var listIdentity = _broadcaster.GetListIdentity("testlist");
+
+            //var hasUser = _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
+
+            //Add user in broadcast list.
+            //await _broadcaster.AddRecipientAsync("testlist", message.From.ToIdentity());
+
+            //hasUser = _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
+            //var getXusersFromBroadcastList = _broadcaster.GetRecipientsAsync("testlist", 0, 10, cancellationToken);
+            //await _broadcaster.DeleteRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
+
+            //Delete broadcast users list.
+            //await _broadcaster.DeleteDistributionListAsync("testlist",cancellationToken);
+
+            //await _broadcaster.SendMessageAsync("testlist", BlipSDKHelper.CreateText("Broadcast!"));
 
         }
 
