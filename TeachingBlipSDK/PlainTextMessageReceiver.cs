@@ -11,18 +11,23 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Takenet.MessagingHub.Client.Extensions.Directory;
 using Takenet.MessagingHub.Client.Extensions.Bucket;
+using Takenet.MessagingHub.Client.Extensions.Scheduler;
+using Takenet.Iris.Messaging.Resources;
 
 namespace TeachingBlipSDK
 {
     public class PlainTextMessageReceiver : IMessageReceiver
     {
+        private readonly ISchedulerExtension _scheduler;
         private readonly IBucketExtension _bucket;
         private readonly IDirectoryExtension _directory;
         private readonly IMessagingHubSender _sender;
         private Settings _settings;
-        public PlainTextMessageReceiver(IMessagingHubSender sender, IDirectoryExtension directory, Settings settings)
+        public PlainTextMessageReceiver(IMessagingHubSender sender, IDirectoryExtension directory, Settings settings, IBucketExtension bucket,ISchedulerExtension scheduler)
         {
             _settings = settings;
+            _scheduler = scheduler;
+            _bucket = bucket;
             _directory = directory;
             _sender = sender;
             
@@ -30,7 +35,7 @@ namespace TeachingBlipSDK
 
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
-           
+            
             /*---------------------------------------------*/
             /*----------------Hello World.----------------*/
             /*---------------------------------------------*/
@@ -40,7 +45,7 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             /*----------Getting user information------------*/
             /*---------------------------------------------*/
-            var info = await _directory.GetDirectoryAccountAsync(message.From.ToIdentity(), cancellationToken);
+            //var info = await _directory.GetDirectoryAccountAsync(message.From.ToIdentity(), cancellationToken);
 
             /*---------------------------------------------*/
             /*-----------------Save Data-------------------*/
@@ -48,7 +53,7 @@ namespace TeachingBlipSDK
             //Como fazer o bucket gravar informações sem ser do tipo Document?
 
             //Key can be anything you want.
-            var key = message.From.ToIdentity().Name + "_Example";
+            //var key = message.From.ToIdentity().Name + "_Example";
             //For X minutes.
             //await _bucket.SetAsync(key, PlainText.Parse("Example"), TimeSpan.FromMinutes(2));
             //Until you delete it.
@@ -57,17 +62,32 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             /*-----------------Get Data-------------------*/
             /*---------------------------------------------*/
-            var data_example = await _bucket.GetAsync<PlainText>(key);
+            //var data_example = await _bucket.GetAsync<PlainText>(key);
 
             /*---------------------------------------------*/
             /*---------------Delete Data-------------------*/
             /*---------------------------------------------*/
-            await _bucket.DeleteAsync(key);
+            //await _bucket.DeleteAsync(key);
 
             /*------------------------------------------*/
             /*----------Working with _settings----------*/
             /*------------------------------------------*/
             var text2 = _settings.setting1;
+
+            /*---------------------------------------------*/
+            /*--------------Scheduling Messages------------*/
+            /*---------------------------------------------*/
+            var to = message.From;
+            var from = message.To;
+            message.From = from;
+            message.To = to;
+            
+            var date = DateTime.Now.Ticks;
+            var date2 = DateTime.UtcNow.ToLocalTime();
+            var date3 = date2.ToFileTimeUtc();
+            await _scheduler.ScheduleMessageAsync(message, DateTimeOffset.Now + TimeSpan.FromMinutes(1) , cancellationToken);
+            var info = await _scheduler.GetScheduledMessageAsync(message.Id, cancellationToken);
+
 
             /*---------------------------------------------*/
             /*-------------Sending text. 1.0---------------*/

@@ -55,6 +55,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector, Version=4.0.3.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.3\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SmartFormat, Version=2.0.0.0, Culture=neutral, PublicKeyToken=568866805651201f, processorArchitecture=MSIL">
       <HintPath>..\packages\SmartFormat.NET.2.0.0.0\lib\net45\SmartFormat.dll</HintPath>
       <Private>True</Private>

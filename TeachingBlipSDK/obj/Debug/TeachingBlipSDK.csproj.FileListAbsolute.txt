@@ -22,3 +22,5 @@ C:\Users\andrebnassis\Desktop\TeachingBlipSDK\TeachingBlipSDK\bin\Debug\Topshelf
 C:\Users\andrebnassis\Desktop\TeachingBlipSDK\TeachingBlipSDK\obj\Debug\TeachingBlipSDK.csprojResolveAssemblyReference.cache
 C:\Users\andrebnassis\Desktop\TeachingBlipSDK\TeachingBlipSDK\obj\Debug\TeachingBlipSDK.dll
 C:\Users\andrebnassis\Desktop\TeachingBlipSDK\TeachingBlipSDK\obj\Debug\TeachingBlipSDK.pdb
+C:\Users\andrebnassis\Desktop\TeachingBlipSDK\TeachingBlipSDK\bin\Debug\SimpleInjector.dll
+C:\Users\andrebnassis\Desktop\TeachingBlipSDK\TeachingBlipSDK\bin\Debug\SimpleInjector.xml
