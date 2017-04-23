@@ -52,11 +52,11 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             //Como fazer o bucket gravar informações sem ser do tipo Document?
 
-            //Key can be anything you want.
+            ////Key can be anything you want.
             //var key = message.From.ToIdentity().Name + "_Example";
-            //For X minutes.
+            ////For X minutes.
             //await _bucket.SetAsync(key, PlainText.Parse("Example"), TimeSpan.FromMinutes(2));
-            //Until you delete it.
+            ////Until you delete it.
             //await _bucket.SetAsync(key, PlainText.Parse("Example"));
 
             /*---------------------------------------------*/
