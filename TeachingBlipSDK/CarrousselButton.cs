@@ -17,5 +17,16 @@ namespace TeachingBlipSDK
 
         //What is the Doc of the button? (WebLink? MediaLink? PlainText?)
         public Document DocumentType { get; set; }
+
+        public ButtonType Type { get; set; }
+
     }
+
+    public enum ButtonType
+    {
+        Default,
+        Share,
+        Location
+    }
+
 }

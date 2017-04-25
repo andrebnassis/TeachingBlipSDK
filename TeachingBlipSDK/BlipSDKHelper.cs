@@ -22,13 +22,14 @@ namespace TeachingBlipSDK
         {
 
             var carroussel = new DocumentCollection();
+            //contents.
             carroussel.Items = new DocumentSelect[content.Count];
             carroussel.ItemType = DocumentSelect.MediaType;
 
+            //Para cada content existente.
             for (int i = 0; i < content.Count; i++)
             {
 
-                var num_buttons = 0;
                 var id_button = 0;
 
                 var tmp = new DocumentSelect();
@@ -40,22 +41,17 @@ namespace TeachingBlipSDK
                 (tmp.Header.Value as MediaLink).Uri = (content[i] as MediaLink).Uri;
                 (tmp.Header.Value as MediaLink).Type = (content[i] as MediaLink).Type;
 
-                foreach (var button in buttons)
-                {
+                var contentButtons = buttons.Select(b => b).Where(b => b.Container == i).OrderBy(b => b.Order);
+                DocumentSelectOption[] tmp_buttons = new DocumentSelectOption[contentButtons.Count()];
+                tmp_buttons = new DocumentSelectOption[contentButtons.Count()];
 
-                    if (button.Container == i)
+
+                foreach (var button in contentButtons)
+                {     
+
+                    if(button.Type == ButtonType.Default)
                     {
-                        num_buttons++;
-                    }
-                }
-
-                DocumentSelectOption[] tmp_buttons = new DocumentSelectOption[num_buttons];
-                tmp_buttons = new DocumentSelectOption[num_buttons];
-
-                foreach (var button in buttons)
-                {
-                    if (button.Container == i)
-                    {
+                        
                         DocumentSelectOption tmp_button = new DocumentSelectOption();
                         tmp_button.Order = button.Order;
                         tmp_button.Label = new DocumentContainer();
@@ -64,7 +60,17 @@ namespace TeachingBlipSDK
                         tmp_button.Value.Value = CreateText(button.Value);
                         tmp_buttons[id_button] = tmp_button;
                         id_button++;
+                    }else if(button.Type == ButtonType.Share)
+                    {
+                        DocumentSelectOption tmp_button = new DocumentSelectOption();
+                        tmp_button.Order = button.Order;
+                        tmp_button.Label = new DocumentContainer();
+                        tmp_button.Label.Value = button.DocumentType;
+                        tmp_buttons[id_button] = tmp_button;
+                        id_button++;
+
                     }
+                    
 
                 }
                 tmp.Options = tmp_buttons;
@@ -92,13 +98,36 @@ namespace TeachingBlipSDK
 
             return document;
         }
-        public static CarrousselButton CreateCarrousselDefaultButton(Document DocumentType, int Order, string value, int Container)
+        
+        public static CarrousselButton CreateCarrousselTextButton(string buttonName, string value, int Container, int Order)
         {
             CarrousselButton btn = new CarrousselButton();
             btn.Container = Container;
-            btn.DocumentType = DocumentType;
-            btn.Order = Order;
+            btn.DocumentType = CreateText(buttonName);
             btn.Value = value;
+            btn.Order = Order;
+            btn.Type = ButtonType.Default;
+            return btn;
+
+        }
+        public static CarrousselButton CreateCarrousselShareButton(int Container,int Order)
+        {
+            CarrousselButton btn = new CarrousselButton();
+            btn.Container = Container;
+            btn.DocumentType = new WebLink();
+            (btn.DocumentType as WebLink).Uri = new Uri("share:");
+            btn.Order = Order;
+            btn.Type = ButtonType.Share;
+            return btn;
+        }
+
+        public static CarrousselButton CreateCarrousselLinkButton(string buttonName, string url, int Container, int Order)
+        {
+            CarrousselButton btn = new CarrousselButton();
+            btn.Container = Container;
+            btn.DocumentType = CreateLink(url, buttonName);
+            btn.Order = Order;
+            btn.Type = ButtonType.Default;
             return btn;
         }
 
@@ -231,7 +260,7 @@ namespace TeachingBlipSDK
                 document.Options[i] = new SelectOption();
                 var button = options.ElementAt(i);
                 document.Options[i].Text = button.Key;
-                document.Options[i].Value = BlipSDKHelper.CreateText(button.Value);
+                document.Options[i].Value = CreateText(button.Value);
                 document.Options[i].Order = i;
 
             }
@@ -251,7 +280,7 @@ namespace TeachingBlipSDK
                 document.Options[i] = new SelectOption();
                 var button = options.ElementAt(i);
                 document.Options[i].Text = button.Key;
-                document.Options[i].Value = BlipSDKHelper.CreateText(button.Value);
+                document.Options[i].Value = CreateText(button.Value);
                 document.Options[i].Order = i;
 
             }
@@ -301,15 +330,14 @@ namespace TeachingBlipSDK
         {
             var button = new DocumentSelectOption();
             button.Label = new DocumentContainer();
-            button.Label.Value = BlipSDKHelper.CreateText(text);
+            button.Label.Value = CreateText(text);
             button.Value = new DocumentContainer();
-            button.Value.Value = BlipSDKHelper.CreateText(key);
+            button.Value.Value = CreateText(key);
 
             return button;
         }
 
-
-
+      
         public static DocumentSelectOption CreateQuickReplySendLocationButton()
         {
             var button = new DocumentSelectOption();
@@ -318,7 +346,7 @@ namespace TeachingBlipSDK
             (button.Label.Value as Input).Validation = new InputValidation();
             (button.Label.Value as Input).Validation.Rule = InputValidationRule.Type;
             (button.Label.Value as Input).Validation.Type = Location.MediaType;
-
+            
             return button;
         }
 

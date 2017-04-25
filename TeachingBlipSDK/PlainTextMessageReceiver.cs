@@ -32,8 +32,9 @@ namespace TeachingBlipSDK
             _scheduler = scheduler;
             _bucket = bucket;
             _directory = directory;
-            _sender = sender;
             _broadcaster = broadcaster;
+            _sender = sender;
+            
             
         }
 
@@ -312,21 +313,21 @@ namespace TeachingBlipSDK
             //                Value = "Value 1"
             //            }
             //        },
-            //        new DocumentSelectOption
+            //new DocumentSelectOption
+            //{
+            //    Label = new DocumentContainer
+            //    {
+            //        Value = new Input
             //        {
-            //            Label = new DocumentContainer
+            //            Validation = new InputValidation
             //            {
-            //                Value = new Input
-            //                {
-            //                    Validation = new InputValidation
-            //                    {
-            //                        Rule = InputValidationRule.Type,
-            //                        Type = Location.MediaType
-            //                    }
-            //                }
-
+            //                Rule = InputValidationRule.Type,
+            //                Type = Location.MediaType
             //            }
+            //        }
+
             //    }
+            //}
             //    },
             //    Scope = SelectScope.Immediate
             //};
@@ -477,7 +478,17 @@ namespace TeachingBlipSDK
             //                    {
             //                        Value = "Value 2"
             //                    }
-            //                }
+            //                },
+            //                new DocumentSelectOption
+            //                {
+            //                    Label = new DocumentContainer
+            //                    {
+            //                        Value = new WebLink
+            //                        {
+            //                            Uri = new Uri("share:")
+            //                        }
+            //                    }
+            //                 }
             //            }
             //        },
 
@@ -526,9 +537,9 @@ namespace TeachingBlipSDK
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
-            /*-------------------------------------------------------*/
-            /*---------------------Carroussel. 2.0-------------------*/
-            /*-------------------------------------------------------*/
+            /*------------------------------------------------------------------------------*/
+            /*---------------------Carroussel. 2.0 - With ShareButton-----------------------*/
+            /*------------------------------------------------------------------------------*/
             //var document = new DocumentCollection();
             //document.Items = new DocumentSelect[2];
             //document.ItemType = DocumentSelect.MediaType;
@@ -540,7 +551,7 @@ namespace TeachingBlipSDK
             //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).Text = "Optional Text";
             //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).Uri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
             //((document.Items[0] as DocumentSelect).Header.Value as MediaLink).PreviewUri = new Uri("http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg");
-            //(document.Items[0] as DocumentSelect).Options = new DocumentSelectOption[2];
+            //(document.Items[0] as DocumentSelect).Options = new DocumentSelectOption[3];
             //(document.Items[0] as DocumentSelect).Options[0] = new DocumentSelectOption();
             //(document.Items[0] as DocumentSelect).Options[0].Label = new DocumentContainer();
             //((document.Items[0] as DocumentSelect).Options[0].Label as DocumentContainer).Value = "Button 1";
@@ -551,6 +562,10 @@ namespace TeachingBlipSDK
             //((document.Items[0] as DocumentSelect).Options[1].Label as DocumentContainer).Value = "Button 2";
             //(document.Items[0] as DocumentSelect).Options[1].Value = new DocumentContainer();
             //((document.Items[0] as DocumentSelect).Options[1].Value as DocumentContainer).Value = "Value 2";
+            //(document.Items[0] as DocumentSelect).Options[2] = new DocumentSelectOption();
+            //(document.Items[0] as DocumentSelect).Options[2].Label = new DocumentContainer();
+            //((document.Items[0] as DocumentSelect).Options[2].Label as DocumentContainer).Value = new WebLink();
+            //(((document.Items[0] as DocumentSelect).Options[2].Label as DocumentContainer).Value as WebLink).Uri = new Uri("share:");
 
             //document.Items[1] = new DocumentSelect();
             //(document.Items[1] as DocumentSelect).Header = new DocumentContainer();
@@ -573,30 +588,31 @@ namespace TeachingBlipSDK
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
-            /*-----------------------------------------------------------*/
-            /*---------------------Carroussel. 3.0-----------------------*/
-            /*-----------------------------------------------------------*/
+            /*------------------------------------------------------------------------------*/
+            /*---------------------Carroussel. 3.0 - With ShareButton-----------------------*/
+            /*------------------------------------------------------------------------------*/
 
-            //List<MediaLink> content = new List<MediaLink>();
-            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle, Image and Buttons", "Image goes up above, Title goes above, Subtitle goes here and button goes below.", "http://www.w3schools.com/css/img_fjords.jpg"));
-            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Button", "Title goes above, Subtitle goes here and button goes below.", ""));
-            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Image", "Image goes up above, Title goes above and Subtitle goes here.", "http://www.w3schools.com/css/img_fjords.jpg"));
-            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Image and Button: Image goes up above, Title goes here and button below", "", "http://www.w3schools.com/css/img_fjords.jpg"));
-            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Image: Image goes up above, Title goes here", "", "http://www.w3schools.com/css/img_fjords.jpg"));
-            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Subtitle", "Title goes above, Subtitle goes here", ""));
-            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Button: Title goes here, button goes below", "", ""));
+            List<MediaLink> content = new List<MediaLink>();
+            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle, Image and Buttons", "Image goes up above, Title goes above, Subtitle goes here and button goes below.", "http://www.w3schools.com/css/img_fjords.jpg"));
+            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Button", "Title goes above, Subtitle goes here and button goes below.", ""));
+            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Image", "Image goes up above, Title goes above and Subtitle goes here.", "http://www.w3schools.com/css/img_fjords.jpg"));
+            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Image and Button: Image goes up above, Title goes here and button below", "", "http://www.w3schools.com/css/img_fjords.jpg"));
+            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Image: Image goes up above, Title goes here", "", "http://www.w3schools.com/css/img_fjords.jpg"));
+            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Subtitle", "Title goes above, Subtitle goes here", ""));
+            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Button: Title goes here, button goes below", "", ""));
 
-            //List<Button> buttons = new List<Button>();
-            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateText("First button: Text"), 1, "bla", 0));
-            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.w3schools.com/css/img_fjords.jpg", "Second button: Link"), 0, "bla2", 0));
-            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateText("Just a text"), 1, "bla3", 1));
-            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.w3schools.com/css/img_fjords.jpg", "Redirect to link"), 1, "bla4", 3));
-            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.w3schools.com/css/img_fjords.jpg", "Redirect to link"), 1, "bla5", 6));
-            //buttons.Add(BlipSDKHelper.CreateCarrousselDefaultButton(BlipSDKHelper.CreateLink("http://www.facebook.com", "Redirect to link"), 2, "bla6", 6));
+            List<CarrousselButton> buttons = new List<CarrousselButton>();
+            buttons.Add(BlipSDKHelper.CreateCarrousselTextButton("First button: Text", "bla", 0, 0));
+            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Second button: Link", "http://www.w3schools.com/css/img_fjords.jpg", 0, 1));
+            buttons.Add(BlipSDKHelper.CreateCarrousselTextButton("Just a text","bla3", 1, 1));
+            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link", "http://www.w3schools.com/css/img_fjords.jpg", 3, 1));
+            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link","http://www.w3schools.com/css/img_fjords.jpg", 6, 1));
+            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link", "http://www.facebook.com", 6, 2));
+            buttons.Add(BlipSDKHelper.CreateCarrousselShareButton(0, 2));
 
-            //var document = BlipSDKHelper.CreateCarroussel(content, buttons);
+            var document = BlipSDKHelper.CreateCarroussel(content, buttons);
 
-            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------*/
             /*----------------List. 1.0--------------*/
@@ -704,6 +720,7 @@ namespace TeachingBlipSDK
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
+            #region Receipt Payment - BLiP did not implemented properly yet.
             /*---------------------------------------*/
             /*-------------Receipt Payment-----------*/
             /*---------------------------------------*/
@@ -752,7 +769,7 @@ namespace TeachingBlipSDK
             //};
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
-
+            #endregion
 
             /*----------------------------------------------------------------*/
             /*-----------------Bucket Extension - Save Data-------------------*/
