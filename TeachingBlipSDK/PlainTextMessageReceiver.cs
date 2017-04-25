@@ -777,27 +777,27 @@ namespace TeachingBlipSDK
             /*----------------------------------------------------------------*/
 
             ////key can be anything you want.
-            var key = message.From.ToIdentity().Name + "_example";
+            //var key = message.From.ToIdentity().Name + "_example";
             ////for x minutes.
             //await _bucket.SetAsync(key, PlainText.Parse("example"), TimeSpan.FromMinutes(2));
             ////until you delete it.
             //await _bucket.SetAsync(key, PlainText.Parse("example"));
 
             ////save data that is not Document
-            NoDocumentObjectExample objectExample = new NoDocumentObjectExample(2, "example");
-            await _bucket.SetAsync(key, objectExample);
+            //NoDocumentObjectExample objectExample = new NoDocumentObjectExample(2, "example");
+            //await _bucket.SetAsync(key, objectExample);
 
 
             /*---------------------------------------------------------------*/
             /*-----------------Bucket Extension - Get Data-------------------*/
             /*---------------------------------------------------------------*/
-            var data_example = await _bucket.GetAsync<Document>(key);
+            //var data_example = await _bucket.GetAsync<Document>(key);
             //var data_example = await _bucket.GetAsync<NoDocumentObjectExample>(key);
 
             /*----------------------------------------------------------------*/
             /*---------------Bucket Extension - Delete Data-------------------*/
             /*----------------------------------------------------------------*/
-            await _bucket.DeleteAsync(key);
+            //await _bucket.DeleteAsync(key);
 
 
             /*-------------------------------------------------------------*/
