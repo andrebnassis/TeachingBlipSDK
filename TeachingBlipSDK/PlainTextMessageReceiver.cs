@@ -434,9 +434,9 @@ namespace TeachingBlipSDK
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
-            /*-------------------------------------------------------*/
-            /*---------------------Carroussel. 1.0-------------------*/
-            /*-------------------------------------------------------*/
+            /*------------------------------------------------------------------------------*/
+            /*---------------------Carroussel. 1.0 - With ShareButton-----------------------*/
+            /*------------------------------------------------------------------------------*/
 
             //var document = new DocumentCollection
             //{
@@ -592,27 +592,27 @@ namespace TeachingBlipSDK
             /*---------------------Carroussel. 3.0 - With ShareButton-----------------------*/
             /*------------------------------------------------------------------------------*/
 
-            List<MediaLink> content = new List<MediaLink>();
-            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle, Image and Buttons", "Image goes up above, Title goes above, Subtitle goes here and button goes below.", "http://www.w3schools.com/css/img_fjords.jpg"));
-            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Button", "Title goes above, Subtitle goes here and button goes below.", ""));
-            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Image", "Image goes up above, Title goes above and Subtitle goes here.", "http://www.w3schools.com/css/img_fjords.jpg"));
-            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Image and Button: Image goes up above, Title goes here and button below", "", "http://www.w3schools.com/css/img_fjords.jpg"));
-            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Image: Image goes up above, Title goes here", "", "http://www.w3schools.com/css/img_fjords.jpg"));
-            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Subtitle", "Title goes above, Subtitle goes here", ""));
-            content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Button: Title goes here, button goes below", "", ""));
+            //List<MediaLink> content = new List<MediaLink>();
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle, Image and Buttons", "Image goes up above, Title goes above, Subtitle goes here and button goes below.", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Button", "Title goes above, Subtitle goes here and button goes below.", ""));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Subtitle and Image", "Image goes up above, Title goes above and Subtitle goes here.", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title, Image and Button: Image goes up above, Title goes here and button below", "", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Image: Image goes up above, Title goes here", "", "http://www.w3schools.com/css/img_fjords.jpg"));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Subtitle", "Title goes above, Subtitle goes here", ""));
+            //content.Add(BlipSDKHelper.CreateCarrousselHeader("Title and Button: Title goes here, button goes below", "", ""));
 
-            List<CarrousselButton> buttons = new List<CarrousselButton>();
-            buttons.Add(BlipSDKHelper.CreateCarrousselTextButton("First button: Text", "bla", 0, 0));
-            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Second button: Link", "http://www.w3schools.com/css/img_fjords.jpg", 0, 1));
-            buttons.Add(BlipSDKHelper.CreateCarrousselTextButton("Just a text","bla3", 1, 1));
-            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link", "http://www.w3schools.com/css/img_fjords.jpg", 3, 1));
-            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link","http://www.w3schools.com/css/img_fjords.jpg", 6, 1));
-            buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link", "http://www.facebook.com", 6, 2));
-            buttons.Add(BlipSDKHelper.CreateCarrousselShareButton(0, 2));
+            //List<CarrousselButton> buttons = new List<CarrousselButton>();
+            //buttons.Add(BlipSDKHelper.CreateCarrousselTextButton("First button: Text", "bla", 0, 0));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Second button: Link", "http://www.w3schools.com/css/img_fjords.jpg", 0, 1));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselTextButton("Just a text","bla3", 1, 1));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link", "http://www.w3schools.com/css/img_fjords.jpg", 3, 1));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link","http://www.w3schools.com/css/img_fjords.jpg", 6, 1));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselLinkButton("Redirect to link", "http://www.facebook.com", 6, 2));
+            //buttons.Add(BlipSDKHelper.CreateCarrousselShareButton(0, 2));
 
-            var document = BlipSDKHelper.CreateCarroussel(content, buttons);
+            //var document = BlipSDKHelper.CreateCarroussel(content, buttons);
 
-            await _sender.SendMessageAsync(document, message.From, cancellationToken);
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*---------------------------------------*/
             /*----------------List. 1.0--------------*/
@@ -632,7 +632,7 @@ namespace TeachingBlipSDK
             //            Text = "Optional Text"
             //        }
             //    },
-            //    Items = new DocumentContainer[] 
+            //    Items = new DocumentContainer[]
             //    {
             //        new DocumentContainer
             //        {
@@ -720,6 +720,7 @@ namespace TeachingBlipSDK
 
             //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
+
             #region Receipt Payment - BLiP did not implemented properly yet.
             /*---------------------------------------*/
             /*-------------Receipt Payment-----------*/
@@ -774,46 +775,50 @@ namespace TeachingBlipSDK
             /*----------------------------------------------------------------*/
             /*-----------------Bucket Extension - Save Data-------------------*/
             /*----------------------------------------------------------------*/
-            //Como fazer o bucket gravar informações sem ser do tipo Document?
 
-            ////Key can be anything you want.
-            //var key = message.From.ToIdentity().Name + "_Example";
-            ////For X minutes.
-            //await _bucket.SetAsync(key, PlainText.Parse("Example"), TimeSpan.FromMinutes(2));
-            ////Until you delete it.
-            //await _bucket.SetAsync(key, PlainText.Parse("Example"));
+            ////key can be anything you want.
+            var key = message.From.ToIdentity().Name + "_example";
+            ////for x minutes.
+            //await _bucket.SetAsync(key, PlainText.Parse("example"), TimeSpan.FromMinutes(2));
+            ////until you delete it.
+            //await _bucket.SetAsync(key, PlainText.Parse("example"));
+
+            ////save data that is not Document
+            NoDocumentObjectExample objectExample = new NoDocumentObjectExample(2, "example");
+            await _bucket.SetAsync(key, objectExample);
+
 
             /*---------------------------------------------------------------*/
             /*-----------------Bucket Extension - Get Data-------------------*/
             /*---------------------------------------------------------------*/
-            //var data_example = await _bucket.GetAsync<PlainText>(key);
+            var data_example = await _bucket.GetAsync<Document>(key);
+            //var data_example = await _bucket.GetAsync<NoDocumentObjectExample>(key);
 
             /*----------------------------------------------------------------*/
             /*---------------Bucket Extension - Delete Data-------------------*/
             /*----------------------------------------------------------------*/
-            //await _bucket.DeleteAsync(key);
+            await _bucket.DeleteAsync(key);
 
 
             /*-------------------------------------------------------------*/
             /*-------------Broadcaster Extension (Envio em massa)----------*/
             /*-------------------------------------------------------------*/
-            //Not working properly yet.
+            ////Not working properly yet.
 
-            //Create broadcast users list.
+            ////Create broadcast users list.
             //await _broadcaster.CreateDistributionListAsync("testlist", cancellationToken);
 
             //var listIdentity = _broadcaster.GetListIdentity("testlist");
 
             //var hasUser = _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
 
-            //Add user in broadcast list.
+            ////Add user in broadcast list.
             //await _broadcaster.AddRecipientAsync("testlist", message.From.ToIdentity());
 
-            //hasUser = _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
             //var getXusersFromBroadcastList = _broadcaster.GetRecipientsAsync("testlist", 0, 10, cancellationToken);
             //await _broadcaster.DeleteRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
 
-            //Delete broadcast users list.
+            ////Delete broadcast users list.
             //await _broadcaster.DeleteDistributionListAsync("testlist",cancellationToken);
 
             //await _broadcaster.SendMessageAsync("testlist", BlipSDKHelper.CreateText("Broadcast!"));

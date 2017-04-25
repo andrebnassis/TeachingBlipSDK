@@ -7,6 +7,7 @@ using Takenet.MessagingHub.Client.Listener;
 using System.Diagnostics;
 using System;
 using Takenet.MessagingHub.Client.Extensions.Bucket;
+using Lime.Protocol.Serialization;
 
 namespace TeachingBlipSDK
 {
@@ -23,6 +24,7 @@ namespace TeachingBlipSDK
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
+            TypeUtil.RegisterDocument<NoDocumentObjectExample>();
 			Trace.Listeners.Add(new TextWriterTraceListener(Console.Out)); 
             return Task.CompletedTask;
         }
