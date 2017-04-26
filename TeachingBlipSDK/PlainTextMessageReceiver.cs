@@ -290,48 +290,48 @@ namespace TeachingBlipSDK
             /*----creating quickreply 1.1 - Sending Location Button----*/
             /*---------------------------------------------------------*/
 
-            //var document = new DocumentSelect
-            //{
-            //    Header = new DocumentContainer
-            //    {
-            //        Value = new PlainText
-            //        {
-            //            Text = "Menu Text"
-            //        }
-            //    },
-            //    Options = new DocumentSelectOption[]
-            //    {
-            //        new DocumentSelectOption
-            //        {
-            //            Label = new DocumentContainer
-            //            {
-            //                Value = "Button 1",
+            var document = new DocumentSelect
+            {
+                Header = new DocumentContainer
+                {
+                    Value = new PlainText
+                    {
+                        Text = "Menu Text"
+                    }
+                },
+                Options = new DocumentSelectOption[]
+                {
+                    new DocumentSelectOption
+                    {
+                        Label = new DocumentContainer
+                        {
+                            Value = "Button 1",
 
-            //            },
-            //            Value = new DocumentContainer
-            //            {
-            //                Value = "Value 1"
-            //            }
-            //        },
-            //new DocumentSelectOption
-            //{
-            //    Label = new DocumentContainer
-            //    {
-            //        Value = new Input
-            //        {
-            //            Validation = new InputValidation
-            //            {
-            //                Rule = InputValidationRule.Type,
-            //                Type = Location.MediaType
-            //            }
-            //        }
+                        },
+                        Value = new DocumentContainer
+                        {
+                            Value = "Value 1"
+                        }
+                    },
+            new DocumentSelectOption
+            {
+                Label = new DocumentContainer
+                {
+                    Value = new Input
+                    {
+                        Validation = new InputValidation
+                        {
+                            Rule = InputValidationRule.Type,
+                            Type = Location.MediaType
+                        }
+                    }
 
-            //    }
-            //}
-            //    },
-            //    Scope = SelectScope.Immediate
-            //};
-            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
+                }
+            }
+                },
+                Scope = SelectScope.Immediate
+            };
+            await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*-------------------------------*/
             /*----creating quickreply 2.0----*/

@@ -1,10 +1,26 @@
 ﻿{
    "identifier": "solzabot",
   "accessKey": "cVo1UmtwT1JVaE8xVzZ3NVNoMjg=",
+  "receiptEvents": [ "failed","received" ],
   "messageReceivers": [
     {
       "type": "PlainTextMessageReceiver",
       "mediaType": "text/plain"
+    },
+    {
+      "type": "MediaMessageReceiver",
+      "mediaType": "application/vnd.lime.media-link\\+json"
+    },
+    {
+      "type": "LocationMessageReceiver",
+      "mediaType": "application/vnd.lime.location\\+json"
+    }
+  ],
+  "notificationReceivers": [
+    {
+      "type": "NotificationMessageReceiver",
+      "mediaType": "text/plain"
+
     }
   ],
   "settings": {
