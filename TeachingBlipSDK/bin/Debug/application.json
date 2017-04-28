@@ -1,7 +1,7 @@
 ﻿{
    "identifier": "solzabot",
   "accessKey": "cVo1UmtwT1JVaE8xVzZ3NVNoMjg=",
-  "receiptEvents": [ "failed","received" ],
+  "receiptEvents": [ "failed" ], //Filtro de notificações que queremos monitorar.
   "messageReceivers": [
     {
       "type": "PlainTextMessageReceiver",

@@ -290,48 +290,48 @@ namespace TeachingBlipSDK
             /*----creating quickreply 1.1 - Sending Location Button----*/
             /*---------------------------------------------------------*/
 
-            var document = new DocumentSelect
-            {
-                Header = new DocumentContainer
-                {
-                    Value = new PlainText
-                    {
-                        Text = "Menu Text"
-                    }
-                },
-                Options = new DocumentSelectOption[]
-                {
-                    new DocumentSelectOption
-                    {
-                        Label = new DocumentContainer
-                        {
-                            Value = "Button 1",
+            //var document = new DocumentSelect
+            //{
+            //    Header = new DocumentContainer
+            //    {
+            //        Value = new PlainText
+            //        {
+            //            Text = "Menu Text"
+            //        }
+            //    },
+            //    Options = new DocumentSelectOption[]
+            //    {
+            //        new DocumentSelectOption
+            //        {
+            //            Label = new DocumentContainer
+            //            {
+            //                Value = "Button 1",
 
-                        },
-                        Value = new DocumentContainer
-                        {
-                            Value = "Value 1"
-                        }
-                    },
-            new DocumentSelectOption
-            {
-                Label = new DocumentContainer
-                {
-                    Value = new Input
-                    {
-                        Validation = new InputValidation
-                        {
-                            Rule = InputValidationRule.Type,
-                            Type = Location.MediaType
-                        }
-                    }
+            //            },
+            //            Value = new DocumentContainer
+            //            {
+            //                Value = "Value 1"
+            //            }
+            //        },
+            //new DocumentSelectOption
+            //{
+            //    Label = new DocumentContainer
+            //    {
+            //        Value = new Input
+            //        {
+            //            Validation = new InputValidation
+            //            {
+            //                Rule = InputValidationRule.Type,
+            //                Type = Location.MediaType
+            //            }
+            //        }
 
-                }
-            }
-                },
-                Scope = SelectScope.Immediate
-            };
-            await _sender.SendMessageAsync(document, message.From, cancellationToken);
+            //    }
+            //}
+            //    },
+            //    Scope = SelectScope.Immediate
+            //};
+            //await _sender.SendMessageAsync(document, message.From, cancellationToken);
 
             /*-------------------------------*/
             /*----creating quickreply 2.0----*/
@@ -805,23 +805,23 @@ namespace TeachingBlipSDK
             /*-------------------------------------------------------------*/
             ////Not working properly yet.
 
-            ////Create broadcast users list.
-            //await _broadcaster.CreateDistributionListAsync("testlist", cancellationToken);
+            //Create broadcast users list.
+            await _broadcaster.CreateDistributionListAsync("testlist", cancellationToken);
 
-            //var listIdentity = _broadcaster.GetListIdentity("testlist");
+            var listIdentity =  _broadcaster.GetListIdentity("testlist");
 
-            //var hasUser = _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
+            var hasUser = await _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
 
-            ////Add user in broadcast list.
-            //await _broadcaster.AddRecipientAsync("testlist", message.From.ToIdentity());
+            //Add user in broadcast list.
+            await _broadcaster.AddRecipientAsync("testlist", message.From.ToIdentity());
 
-            //var getXusersFromBroadcastList = _broadcaster.GetRecipientsAsync("testlist", 0, 10, cancellationToken);
-            //await _broadcaster.DeleteRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
+            var getXusersFromBroadcastList = await _broadcaster.GetRecipientsAsync("testlist", 0, 10, cancellationToken);
+            await _broadcaster.DeleteRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
 
-            ////Delete broadcast users list.
-            //await _broadcaster.DeleteDistributionListAsync("testlist",cancellationToken);
+            //Delete broadcast users list.
+            await _broadcaster.DeleteDistributionListAsync("testlist", cancellationToken);
 
-            //await _broadcaster.SendMessageAsync("testlist", BlipSDKHelper.CreateText("Broadcast!"));
+            await _broadcaster.SendMessageAsync("testlist", BlipSDKHelper.CreateText("Broadcast!"));
 
         }
 
