@@ -38,6 +38,18 @@ namespace TeachingBlipSDK
             
         }
 
+        private async Task SendComposingAsync(Node destination, CancellationToken cancellationToken)
+        {
+            await _sender.SendMessageAsync(
+            new Message
+            {
+                Id = null,
+                To = destination,
+                Content = new ChatState { State = ChatStateEvent.Composing }
+            },
+            cancellationToken);
+        }
+
         public async Task ReceiveAsync(Message message, CancellationToken cancellationToken)
         {
 
@@ -46,6 +58,16 @@ namespace TeachingBlipSDK
             /*---------------------------------------------*/
             //Trace.TraceInformation($"From: {message.From} \tContent: {message.Content}");
             //await _sender.SendMessageAsync("Pong!", message.From, cancellationToken);
+
+            /*-----------------------------------------------------*/
+            /*----------------Composing text State.----------------*/
+            /*-----------------------------------------------------*/
+            Trace.TraceInformation($"From: {message.From} \tContent: {message.Content}");
+
+            await SendComposingAsync(message.From, cancellationToken);
+            System.Threading.Thread.Sleep(5000);
+
+            await _sender.SendMessageAsync("Pong!", message.From, cancellationToken);
 
             /*---------------------------------------------*/
             /*----------Getting user information------------*/
@@ -806,22 +828,22 @@ namespace TeachingBlipSDK
             ////Not working properly yet.
 
             //Create broadcast users list.
-            await _broadcaster.CreateDistributionListAsync("testlist", cancellationToken);
+            //await _broadcaster.CreateDistributionListAsync("testlist", cancellationToken);
 
-            var listIdentity =  _broadcaster.GetListIdentity("testlist");
+            //var listIdentity =  _broadcaster.GetListIdentity("testlist");
 
-            var hasUser = await _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
+            //var hasUser = await _broadcaster.HasRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
 
-            //Add user in broadcast list.
-            await _broadcaster.AddRecipientAsync("testlist", message.From.ToIdentity());
+            ////Add user in broadcast list.
+            //await _broadcaster.AddRecipientAsync("testlist", message.From.ToIdentity());
 
-            var getXusersFromBroadcastList = await _broadcaster.GetRecipientsAsync("testlist", 0, 10, cancellationToken);
-            await _broadcaster.DeleteRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
+            //var getXusersFromBroadcastList = await _broadcaster.GetRecipientsAsync("testlist", 0, 10, cancellationToken);
+            //await _broadcaster.DeleteRecipientAsync("testlist", message.From.ToIdentity(), cancellationToken);
 
-            //Delete broadcast users list.
-            await _broadcaster.DeleteDistributionListAsync("testlist", cancellationToken);
+            ////Delete broadcast users list.
+            //await _broadcaster.DeleteDistributionListAsync("testlist", cancellationToken);
 
-            await _broadcaster.SendMessageAsync("testlist", BlipSDKHelper.CreateText("Broadcast!"));
+            //await _broadcaster.SendMessageAsync("testlist", BlipSDKHelper.CreateText("Broadcast!"));
 
         }
 
